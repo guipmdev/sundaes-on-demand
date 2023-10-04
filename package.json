@@ -1,6 +1,5 @@
 {
   "name": "sundaes-on-demand",
-  "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^9.3.3",
