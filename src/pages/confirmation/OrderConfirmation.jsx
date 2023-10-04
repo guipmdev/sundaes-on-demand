@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Button from 'react-bootstrap/Button'
 import { useOrderDetails } from '../../contexts/OrderDetails'
+import { AlertBanner } from '../common/AlertBanner'
 
 export function OrderConfirmation({ setOrderPhase }) {
   const { resetOrder } = useOrderDetails()
+
   const [orderNumber, setOrderNumber] = useState(null)
+  const [error, setError] = useState(false)
 
   useEffect(() => {
     axios
@@ -16,9 +19,22 @@ export function OrderConfirmation({ setOrderPhase }) {
         setOrderNumber(response.data.orderNumber)
       })
       .catch((error) => {
-        // TODO: handle error from server
+        if (error.name !== 'CanceledError') setError(true)
       })
   }, [])
+
+  const newOrderButton = (
+    <Button onClick={handleCreateNewOrder}>Create new order</Button>
+  )
+
+  if (error) {
+    return (
+      <>
+        <AlertBanner message={null} variant={null} />
+        {newOrderButton}
+      </>
+    )
+  }
 
   function handleCreateNewOrder() {
     // clear the order details
@@ -36,7 +52,7 @@ export function OrderConfirmation({ setOrderPhase }) {
         <p style={{ fontSize: '25%' }}>
           as per our terms and conditions, nothing will happen now
         </p>
-        <Button onClick={handleCreateNewOrder}>Create new order</Button>
+        {newOrderButton}
       </div>
     )
   } else {
