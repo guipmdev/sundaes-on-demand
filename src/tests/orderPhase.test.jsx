@@ -53,6 +53,8 @@ test('order phases for happy path', async () => {
   expect(screen.getByText('2 Chocolate')).toBeInTheDocument()
   expect(screen.getByText('Cherries')).toBeInTheDocument()
 
+  // OR
+
   const orderItems = screen.getAllByRole('listitem')
   const orderItemsText = orderItems.map((item) => item.textContent)
   expect(orderItemsText).toEqual(['1 Vanilla', '2 Chocolate', 'Cherries'])
@@ -104,4 +106,86 @@ test('order phases for happy path', async () => {
   // unmount the component to trigger cleanup and avoid
   //   "not wrapped in act()" error
   unmount()
+})
+
+test('toppings header is not on summary page if no toppings ordered', async () => {
+  const user = userEvent.setup()
+
+  // render app
+  render(<App />)
+
+  // add ice cream scoops
+  const vanillaInput = await screen.findByRole('spinbutton', {
+    name: 'Vanilla',
+  })
+  await user.clear(vanillaInput)
+  await user.type(vanillaInput, '1')
+
+  const chocolateInput = await screen.findByRole('spinbutton', {
+    name: 'Chocolate',
+  })
+  await user.clear(chocolateInput)
+  await user.type(chocolateInput, '2')
+
+  // find and click order summary button
+  const orderSummaryButton = screen.getByRole('button', {
+    name: /order sundae/i,
+  })
+  await user.click(orderSummaryButton)
+
+  // check summary information based on order
+  const scoopsHeading = screen.getByRole('heading', { name: 'Scoops: $6.00' })
+  expect(scoopsHeading).toBeInTheDocument()
+
+  const toppingsHeading = screen.queryByRole('heading', {
+    name: /toppings/i,
+  })
+  expect(toppingsHeading).not.toBeInTheDocument()
+})
+
+test('toppings header is not on summary page if toppings ordered, then removed', async () => {
+  const user = userEvent.setup()
+
+  // render app
+  render(<App />)
+
+  // add ice cream scoops
+  const vanillaInput = await screen.findByRole('spinbutton', {
+    name: 'Vanilla',
+  })
+  await user.clear(vanillaInput)
+  await user.type(vanillaInput, '1')
+
+  // add toppings and confirm
+
+  const cherriesCheckbox = await screen.findByRole('checkbox', {
+    name: 'Cherries',
+  })
+  await user.click(cherriesCheckbox)
+  expect(cherriesCheckbox).toBeChecked()
+
+  const toppingsTotal = screen.getByText('Toppings total: $', {
+    exact: false,
+  })
+  expect(toppingsTotal).toHaveTextContent('1.50')
+
+  // remove the topping
+  await user.click(cherriesCheckbox)
+  expect(cherriesCheckbox).not.toBeChecked()
+  expect(toppingsTotal).toHaveTextContent('0.00')
+
+  // find and click order summary button
+  const orderSummaryButton = screen.getByRole('button', {
+    name: /order sundae/i,
+  })
+  await user.click(orderSummaryButton)
+
+  // check summary information based on order
+  const scoopsHeading = screen.getByRole('heading', { name: 'Scoops: $2.00' })
+  expect(scoopsHeading).toBeInTheDocument()
+
+  const toppingsHeading = screen.queryByRole('heading', {
+    name: /toppings/i,
+  })
+  expect(toppingsHeading).not.toBeInTheDocument()
 })
