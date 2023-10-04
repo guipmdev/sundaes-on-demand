@@ -22,7 +22,8 @@ export function ScoopOption({ name, imagePath }) {
     // validate
     setIsInvalid(!valueIsValid)
 
-    updateItemCount(name, parseInt(currentValue), 'scoops')
+    // update scoop to 0 if value is invalid
+    updateItemCount(name, valueIsValid ? parseInt(currentValue) : 0, 'scoops')
   }
 
   return (
