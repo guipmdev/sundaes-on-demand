@@ -1,4 +1,4 @@
-import { Form } from 'react-bootstrap'
+import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import { useOrderDetails } from '../../contexts/OrderDetails'
 

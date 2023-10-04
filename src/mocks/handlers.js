@@ -1,6 +1,10 @@
 // src/mocks/handlers.js
 import { rest } from 'msw'
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
 export const handlers = [
   // Handles a GET /scoops request
   rest.get('http://localhost:3030/scoops', (req, res, ctx) => {
@@ -21,5 +25,11 @@ export const handlers = [
         { name: 'Hot fudge', imagePath: '/images/hot-fudge.png' },
       ]),
     )
+  }),
+
+  // Handles a GET /toppings request
+  rest.post('http://localhost:3030/order', async (req, res, ctx) => {
+    await sleep(100)
+    return res(ctx.json({ orderNumber: 123455676 }))
   }),
 ]
