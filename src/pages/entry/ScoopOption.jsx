@@ -7,7 +7,7 @@ import { useState } from 'react'
 export function ScoopOption({ name, imagePath }) {
   const { updateItemCount } = useOrderDetails()
 
-  const [isInvalid, setIsInvalid] = useState(true)
+  const [isInvalid, setIsInvalid] = useState(false)
 
   function handleChange(event) {
     const currentValue = event.currentTarget.value
@@ -46,6 +46,9 @@ export function ScoopOption({ name, imagePath }) {
           <Form.Control
             type="number"
             required={true}
+            defaultValue={0}
+            min={0}
+            max={10}
             step={1}
             onChange={handleChange}
             isInvalid={isInvalid}
