@@ -46,9 +46,6 @@ export function ScoopOption({ name, imagePath }) {
           <Form.Control
             type="number"
             required={true}
-            defaultValue={0}
-            min={1}
-            max={10}
             step={1}
             onChange={handleChange}
             isInvalid={isInvalid}
