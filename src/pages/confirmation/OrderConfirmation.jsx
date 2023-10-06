@@ -46,16 +46,16 @@ export function OrderConfirmation({ setOrderPhase }) {
 
   if (orderNumber) {
     return (
-      <div style={{ textAlign: 'center' }}>
+      <div style={{ textAlign: "center" }}>
         <h1>Thank You!</h1>
         <p>Your order number is {orderNumber}</p>
-        <p style={{ fontSize: '25%' }}>
+        <p style={{ fontSize: "75%" }}>
           as per our terms and conditions, nothing will happen now
         </p>
         {newOrderButton}
       </div>
-    )
+    );
   } else {
-    return <div>Loading</div>
+    return <div>Loading</div>;
   }
 }
