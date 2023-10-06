@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event'
 test('indicate if scoop count is non-int or out of range', async () => {
   const user = userEvent.setup()
 
-  render(<ScoopOption name={jest.fn()} imagePath={jest.fn()} />)
+  render(<ScoopOption />)
 
   const scoopInput = await screen.findByRole('spinbutton')
 
