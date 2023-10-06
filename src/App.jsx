@@ -2,8 +2,8 @@ import { useState } from 'react'
 import Container from 'react-bootstrap/Container'
 
 import { OrderConfirmation } from './pages/confirmation/OrderConfirmation'
-import { OrderSummary } from './pages/summary/OrderSummary'
 import { OrderEntry } from './pages/entry/OrderEntry'
+import { OrderSummary } from './pages/summary/OrderSummary'
 
 import { OrderDetailsProvider } from './contexts/OrderDetails'
 
@@ -27,7 +27,9 @@ export function App() {
 
   return (
     <OrderDetailsProvider>
-      <Container>{<Component setOrderPhase={setOrderPhase} />}</Container>
+      <Container>
+        <Component setOrderPhase={setOrderPhase} />
+      </Container>
     </OrderDetailsProvider>
   )
 }
