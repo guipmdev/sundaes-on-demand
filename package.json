@@ -40,6 +40,17 @@
       "last 1 safari version"
     ]
   },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "bower_components",
+      "src"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/guipmdev/sundaes-on-demand.git"
