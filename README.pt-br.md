@@ -108,6 +108,8 @@ Esse projeto atende ao setor de lojas de sobremesas, simplificando o processo de
 
 ## 🤖 Demo
 
+https://github.com/guipmdev/sundaes-on-demand/assets/136738335/c3f663ac-a3e4-4a12-8cd1-b8915e12e165
+
 ## 🛠 Tecnologias
 
 As seguintes ferramentas foram usadas para desenvolver esse projeto:
