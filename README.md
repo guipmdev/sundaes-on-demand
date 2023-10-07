@@ -108,6 +108,8 @@ This project targets the dessert store segment, simplifying the online ordering 
 
 ## 🤖 Demo
 
+https://github.com/guipmdev/sundaes-on-demand/assets/136738335/c3f663ac-a3e4-4a12-8cd1-b8915e12e165
+
 ## 🛠 Technologies
 
 The following tools were used to build the project:
