@@ -1,6 +1,6 @@
 {
   "name": "sundaes-on-demand",
-  "description": "",
+  "description": "Web app for ordering custom sundaes, with a focus on testing",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
