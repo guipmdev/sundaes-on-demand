@@ -75,6 +75,7 @@
   </summary>
 
 - [📍 Visão geral](#-visão-geral)
+  - [⚠️ Aviso](#️-aviso)
 - [✨ Funcionalidades](#-funcionalidades)
 - [🤖 Demo](#-demo)
 - [🛠 Tecnologias](#-tecnologias)
@@ -97,6 +98,10 @@
 O projeto **sundaes-on-demand** é uma aplicação web desenvolvida em _React_ para pedir sundaes personalizados, permitindo escolher dentre diferentes sabores e coberturas. O aplicativo calcula o preço total com base nas seleções e fornece uma interface amigável para o envio dos pedidos.
 
 Esse projeto atende ao setor de lojas de sobremesas, simplificando o processo de pedidos on-line e proporcionando uma experiência interativa e personalizável para os clientes.
+
+### ⚠️ Aviso
+
+O back-end dessa aplicação foi desenvolvido com _Node.js_ e não tem um deploy, pois o foco principal é os testes. **Para testar essa aplicação completamente, você precisará clonar o repositório**, executar o script `start` e, em seguida, abrir o site.
 
 ## ✨ Funcionalidades
 
